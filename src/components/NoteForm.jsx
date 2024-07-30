@@ -1,11 +1,14 @@
 import db from "../appwrite/database";
 
 
+// eslint-disable-next-line react/prop-types
 const NoteForm = ({setNotes}) => {
 
     const handleAdd = async (e) =>{
         e.preventDefault()
         const noteBody = e.target.body.value;
+
+        if(noteBody === "") return
 
         try {
 
@@ -13,6 +16,8 @@ const NoteForm = ({setNotes}) => {
 
             const res = await db.notes.create(payload)
             setNotes((prevState) => [res, ...prevState])
+
+            e.target.reset();
         } catch (error) {
             console.error(error)
         }

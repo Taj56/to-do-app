@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import db from "../appwrite/database"
 import NoteForm from "../components/NoteForm"
+import { Query } from "appwrite"
+import Note from "../components/Note"
 const Notes = () => {
 
     const [notes, setNotes] = useState([])
@@ -10,7 +12,10 @@ const Notes = () => {
     }, [])
 
     const init = async () => {
-        const res = await db.notes.list();
+        const res = await db.notes.list(
+            [Query.orderDesc('$createdAt')]
+
+        );
 
         setNotes(res.documents);
     }
@@ -20,7 +25,7 @@ const Notes = () => {
         <NoteForm  setNotes={setNotes}/>
         <div>
             {notes.map((note) => (
-                <div key={note.$id}>{note.body}</div>
+                <Note key={note.$id} noteData={note} setNotes={setNotes}/>
             ))}
         </div>
     </div>
