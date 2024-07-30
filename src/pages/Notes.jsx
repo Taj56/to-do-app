@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { databases } from "../appwrite/config"
+import db from "../appwrite/database"
+import NoteForm from "../components/NoteForm"
 const Notes = () => {
 
     const [notes, setNotes] = useState([])
@@ -9,16 +10,14 @@ const Notes = () => {
     }, [])
 
     const init = async () => {
-        const res = await databases.listDocuments(
-            import.meta.env.VITE_DATABASE_ID,
-            import.meta.env.VITE_COLLECTION_ID_NOTES
-        );
+        const res = await db.notes.list();
 
         setNotes(res.documents);
     }
 
   return (
     <div>
+        <NoteForm  setNotes={setNotes}/>
         <div>
             {notes.map((note) => (
                 <div key={note.$id}>{note.body}</div>
