@@ -1,4 +1,5 @@
 import db from "../appwrite/database";
+import Send from "../assets/Send";
 
 
 // eslint-disable-next-line react/prop-types
@@ -25,10 +26,11 @@ const NoteForm = ({setNotes}) => {
 
   return (
     <form onSubmit={handleAdd} id="todo-form">
-      <input type="text" 
-      name="body"
-      placeholder="Add a note..."
-      />
+        <Send />
+        <input type="text" 
+        name="body"
+        placeholder="Add a note..."
+        />
     </form>
   )
 }

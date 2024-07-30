@@ -92,6 +92,13 @@
   #todo-form{
       margin: 2em 0;
   }
+
+  .sendBtn {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #7c1010;
+    font-weight: bold;
+  }
   
   #todo-form input{
    border: 1px solid var(--primary-border-color);
