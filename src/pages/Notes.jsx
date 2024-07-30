@@ -21,14 +21,18 @@ const Notes = () => {
     }
 
   return (
-    <div>
+    <>
+        <div>
+            <h1>✍️ My Todo List</h1>
+        </div>
+
         <NoteForm  setNotes={setNotes}/>
         <div>
             {notes.map((note) => (
                 <Note key={note.$id} noteData={note} setNotes={setNotes}/>
             ))}
         </div>
-    </div>
+    </>
   )
 }
 export default Notes

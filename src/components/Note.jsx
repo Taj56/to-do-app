@@ -18,8 +18,8 @@ const Note = ({noteData, setNotes}) => {
     }
 
   return (
-    <div>
-        <span onClick={handleUpdate}>
+    <div className="note-wrapper">
+        <span onClick={handleUpdate} className="note-body">
             {note.completed ? <s>{note.body}</s> : <>{note.body}</>}
         </span>
 

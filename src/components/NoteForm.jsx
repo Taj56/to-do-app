@@ -24,7 +24,7 @@ const NoteForm = ({setNotes}) => {
     }
 
   return (
-    <form onSubmit={handleAdd}>
+    <form onSubmit={handleAdd} id="todo-form">
       <input type="text" 
       name="body"
       placeholder="Add a note..."
